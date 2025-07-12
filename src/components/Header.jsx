@@ -18,7 +18,7 @@ function Header() {
 
   return (
     <>
-      <header className="bg-slate-500 shadow-md px-6 py-4 flex items-center justify-between">
+      <header className="bg-slate-100 shadow-md px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="text-xl font-bold text-gray-800">
           <img src={hackLogo} width="40px" height="40px" />

@@ -57,7 +57,7 @@ const ProductDetails = () => {
           <div className="flex justify-center items-center gap-6">
             <div className="flex justify-center items-center gap-2">
               <label className="text-gray-600 font-medium">Price:</label>
-              <p>${product.price.toFixed(2)}</p>
+              <p>₹{product.price.toFixed(2)}</p>
             </div>
             <div className="flex justify-center items-center gap-2">
               <label className="text-gray-600 font-medium">Stock:</label>
