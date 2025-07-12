@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import { useAppContext } from "../context/AppContext";
 import useDebounce from "../hooks/useDebounce";
-import CartSidebar from "./CartSideBar";
+// import CartSidebar from "./CartSideBar";
 
 function Header() {
   const { setSearchQuery, cartItems } = useAppContext();
@@ -50,7 +50,7 @@ function Header() {
           <User className="text-gray-700" size={28} />
         </div>
       </header>
-      <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
+      {/* <CartSidebar isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} /> */}
     </>
   );
 }

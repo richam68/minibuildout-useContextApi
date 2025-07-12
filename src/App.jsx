@@ -2,12 +2,13 @@ import { useState } from "react";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
-import { useToast } from "./hooks/useToast";
+
 import { lazy, Suspense } from "react";
 import Header from "./components/Header";
 import ProductDetails from "./components/ProductDetails";
 import EditProduct from "./components/EditProduct";
 import Dashboard from "./pages/dashboard";
+import { useToast } from "./hooks/useToast";
 
 function App() {
   const toast = useToast();
