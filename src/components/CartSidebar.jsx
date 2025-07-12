@@ -23,7 +23,8 @@ const CartSidebar = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <CartPortal>
+    // <CartPortal>
+    <>
       <div className="fixed inset-0 bg-black/40 z-40" onClick={onClose}></div>
       <aside className="fixed top-0 right-0 w-80 h-full bg-white shadow-lg z-50 p-4 overflow-y-auto transition-transform duration-300">
         <div className="flex justify-between items-center mb-4">
@@ -99,7 +100,8 @@ const CartSidebar = ({ isOpen, onClose }) => {
           </div>
         )}
       </aside>
-    </CartPortal>
+    </>
+    // </CartPortal>
   );
 };
 
