@@ -7,7 +7,7 @@ import { lazy, Suspense } from "react";
 import Header from "./components/Header";
 import ProductDetails from "./components/ProductDetails";
 import EditProduct from "./components/EditProduct";
-import Dashboard from "./pages/Dashboard";
+import Dashboard from "./pages/dashboard";
 
 function App() {
   const toast = useToast();
