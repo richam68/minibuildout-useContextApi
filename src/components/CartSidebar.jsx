@@ -55,11 +55,10 @@ const CartSidebar = ({ isOpen, onClose }) => {
                   <button
                     onClick={() => {
                       decreaseQuantity(item?.id);
-                      //   open(
+
                       <div className="bg-yellow-100 text-yellow-800 p-2 rounded">
                         Decreased quantity of {item?.name}.
                       </div>;
-                      //   );
                     }}
                     disabled={item?.quantity <= 1}
                     className="px-1 py-0 bg-gray-200 rounded "
@@ -70,11 +69,10 @@ const CartSidebar = ({ isOpen, onClose }) => {
                   <button
                     onClick={() => {
                       increaseQuantity(item.id);
-                      //   open(
+
                       <div className="bg-green-300 text-green-800 p-2 rounded">
                         Increased quantity of {item.name}.
                       </div>;
-                      //   );
                     }}
                   >
                     <Plus />
@@ -82,11 +80,9 @@ const CartSidebar = ({ isOpen, onClose }) => {
                   <button
                     onClick={() => {
                       removeFromCart(item.id);
-                      //   open(
                       <div className="bg-red-100 text-red-800 p-2 rounded">
                         Removed {item.name} from cart.
                       </div>;
-                      //   );
                     }}
                     className="text-xs text-red-500 hover:underline cursor-pointer"
                   >
