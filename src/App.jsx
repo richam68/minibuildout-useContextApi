@@ -5,10 +5,9 @@ import "./App.css";
 import { useToast } from "./hooks/useToast";
 import { lazy, Suspense } from "react";
 import Header from "./components/Header";
-
 import ProductDetails from "./components/ProductDetails";
 import EditProduct from "./components/EditProduct";
-import Dashboard from "./pages/dashboard";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   const toast = useToast();
