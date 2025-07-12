@@ -1,9 +1,10 @@
 import { ShoppingCart, User } from "react-feather";
 import hackLogo from "../assets/H2S_Gradient_Logo.png";
 import { useEffect, useState } from "react";
-import CartSidebar from "./CartSideBar";
+
 import { useAppContext } from "../context/AppContext";
 import useDebounce from "../hooks/useDebounce";
+import CartSidebar from "./CartSideBar";
 
 function Header() {
   const { setSearchQuery, cartItems } = useAppContext();
