@@ -6,6 +6,7 @@ import { useAppContext } from "../context/AppContext";
 import { ArrowDown, ArrowUp, Edit, Eye, Trash2, Loader } from "react-feather";
 import useDebounce from "../hooks/useDebounce";
 import useSearch from "../hooks/useSearch";
+import { useToastUtils } from "../utils/toast";
 
 const initialColumns = [
   { id: "id", label: "ID" },
@@ -37,7 +38,7 @@ const ProductTable = () => {
   const [localSearch, setLocalSearch] = useState("");
   const [filters, setFilters] = useState({ category: "", stock: "" });
   const [deletingId, setDeletingId] = useState(null);
-
+  const { showSuccessToast, showErrorToast } = useToastUtils();
   // Debounce the local search input
   const debouncedSearch = useDebounce(localSearch, 200);
 
@@ -128,8 +129,6 @@ const ProductTable = () => {
     navigate(`/edit_product/${id}`, { state: { product } });
   };
 
-  const handleDelete = (id) => {};
-
   const renderCell = (colId, product) => {
     switch (colId) {
       case "image":
@@ -184,6 +183,7 @@ const ProductTable = () => {
                   deleteProduct(product.id)
                     .then(() => {
                       setDeletingId(null);
+                      showSuccessToast("Succesfully Deleted!");
                     })
                     .catch(() => {
                       setDeletingId(null);
@@ -217,11 +217,7 @@ const ProductTable = () => {
                   onClick={(e) => {
                     e.stopPropagation();
                     decreaseQuantity(product.id);
-                    // open(
-                    <div className="bg-yellow-100 text-yellow-800 p-2 rounded">
-                      Decreased quantity of {product.name}.
-                    </div>;
-                    // );
+                    showErrorToast(" Quantity Decreased");
                   }}
                   disabled={cartItem.quantity <= 1}
                   className="px-2 py-1 bg-gray-200 rounded disabled:opacity-50"
@@ -233,11 +229,7 @@ const ProductTable = () => {
                   onClick={(e) => {
                     e.stopPropagation();
                     increaseQuantity(product.id);
-                    // open(
-                    <div className="bg-green-100 text-green-800 p-2 rounded">
-                      Increased quantity of {product.name}.
-                    </div>;
-                    // );
+                    showSuccessToast(" Quantity Increased");
                   }}
                   className="px-2 py-1 bg-gray-200 rounded"
                 >
@@ -249,11 +241,7 @@ const ProductTable = () => {
                 onClick={(e) => {
                   e.stopPropagation();
                   addToCart(product);
-                  //   open(
-                  <div className="bg-green-100 text-green-800 p-2 rounded">
-                    {product.name} added to cart.
-                  </div>;
-                  //   );
+                  showSuccessToast(`Added to cart`);
                 }}
                 className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
               >

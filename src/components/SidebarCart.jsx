@@ -1,13 +1,14 @@
 import { useEffect } from "react";
-import CartPortal from "./CartPortal.jsx";
-import { useAppContext } from "../context/AppContext.jsx";
-import { useToast } from "../hooks/useToast.jsx";
+import CartPortal from "./CartPortal";
+import { useAppContext } from "../context/AppContext";
+import { useToast } from "../hooks/useToast";
 import { Minus, Plus, Trash2, X } from "react-feather";
+import { useToastUtils } from "../utils/toast";
 
 const CartSidebar = ({ isOpen, onClose }) => {
   const { cartItems, increaseQuantity, decreaseQuantity, removeFromCart } =
     useAppContext();
-  const { open } = useToast();
+  const { showSuccessToast, showErrorToast } = useToastUtils();
 
   const total = cartItems.reduce(
     (acc, item) => acc + item?.price * item?.quantity,
@@ -56,10 +57,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                     <button
                       onClick={() => {
                         decreaseQuantity(item?.id);
-
-                        <div className="bg-yellow-100 text-yellow-800 p-2 rounded">
-                          Decreased quantity of {item?.name}.
-                        </div>;
+                        showErrorToast("Decreasing Quantity");
                       }}
                       disabled={item?.quantity <= 1}
                       className="px-1 py-0 bg-gray-200 rounded "
@@ -70,10 +68,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                     <button
                       onClick={() => {
                         increaseQuantity(item.id);
-
-                        <div className="bg-green-300 text-green-800 p-2 rounded">
-                          Increased quantity of {item.name}.
-                        </div>;
+                        showSuccessToast("Increased Quantity");
                       }}
                     >
                       <Plus />
@@ -81,9 +76,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                     <button
                       onClick={() => {
                         removeFromCart(item.id);
-                        <div className="bg-red-100 text-red-800 p-2 rounded">
-                          Removed {item.name} from cart.
-                        </div>;
+                        showErrorToast("Removed Product");
                       }}
                       className="text-xs text-red-500 hover:underline cursor-pointer"
                     >

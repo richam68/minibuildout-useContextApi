@@ -5,11 +5,13 @@ import { useEffect, useState } from "react";
 import { useAppContext } from "../context/AppContext";
 import useDebounce from "../hooks/useDebounce";
 import CartSidebar from "./SidebarCart";
+import { useToastUtils } from "../utils/toast";
 
 function Header() {
   const { setSearchQuery, cartItems } = useAppContext();
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [globalSearch, setGlobalSearch] = useState("");
+  const { showSuccessToast } = useToastUtils();
   // Debounce the global search input
   const debouncedGlobalSearch = useDebounce(globalSearch, 200);
 
@@ -40,7 +42,10 @@ function Header() {
         <div className="flex items-center gap-6">
           <div
             className="relative cursor-pointer"
-            onClick={() => setIsCartOpen(true)}
+            onClick={() => {
+              setIsCartOpen(true);
+              showSuccessToast("Cart Modal Open");
+            }}
           >
             <ShoppingCart className="text-gray-700" size={24} />
             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-1.5 py-0.5 rounded-full">

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ToastContext from "../hooks/useToast";
+import { X } from "react-feather";
 
 export default function ToastProvider({ children }) {
   const [toasts, setToasts] = useState([]);
@@ -16,15 +17,20 @@ export default function ToastProvider({ children }) {
   return (
     <ToastContext.Provider value={{ open, close }}>
       {children}
-      <div className="space-y-2 absolute top-4 left-4">
-        {toasts?.map(({ id, component }) => (
-          <div key={id} className="relative">
-            <button className="absolute top-2 right-2 p-1 rounded-lg bg-gray-200/20 text-gray-800/60">
-              <X size={16} />
-            </button>
-            {component}
-          </div>
-        ))}
+      <div className="fixed inset-0 flex items-center justify-center pointer-events-none">
+        <div className="space-y-2 w-full max-w-md p-4">
+          {toasts?.map(({ id, component }) => (
+            <div key={id} className="relative pointer-events-auto">
+              <button
+                onClick={() => close(id)}
+                className="absolute top-0 right-2 p-1 rounded-lg bg-gray-200/20 text-gray-800/60"
+              >
+                <X size={16} />
+              </button>
+              {component}
+            </div>
+          ))}
+        </div>
       </div>
     </ToastContext.Provider>
   );
