@@ -78,16 +78,6 @@ const ProductTable = () => {
       filtered = filtered.filter((p) => p.status === statusMap[filters.stock]);
     }
 
-    // if (sortConfig.key) {
-    //   filtered.sort((a, b) => {
-    //     const aVal = a[sortConfig.key];
-    //     const bVal = b[sortConfig.key];
-    //     if (aVal < bVal) return sortConfig.direction === "asc" ? -1 : 1;
-    //     if (aVal > bVal) return sortConfig.direction === "asc" ? 1 : -1;
-    //     return 0;
-    //   });
-    // }
-
     if (sortConfig.key) {
       filtered = [...filtered].sort((a, b) => {
         let aVal = a[sortConfig.key];
@@ -164,12 +154,6 @@ const ProductTable = () => {
             >
               <Edit className="w-3 h-3 text-black cursor-pointer" />
             </button>
-            {/* <button
-              className="text-red-500 hover:underline text-sm"
-              onClick={() => handleDelete(product.id)}
-            >
-              <Trash2 className="w-3 h-3 text-red-300" />
-            </button> */}
 
             <button
               onClick={(e) => {
@@ -260,7 +244,6 @@ const ProductTable = () => {
 
   return (
     <div className="p-4 w-full bg-neutral-100 rounded-sm">
-      {/* Sort/Filter Row */}
       <div className="flex flex-wrap items-center justify-between gap-4 mb-4">
         <input
           type="text"

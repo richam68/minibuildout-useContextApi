@@ -6,7 +6,6 @@ import StatCard from "../components/StatsCard";
 const { productsArray } = generateMockProducts(1000);
 
 const Dashboard = () => {
-  //total of products
   const totalProducts = productsArray?.length;
   const totalRevenue = productsArray?.reduce(
     (acc, product) => acc + product?.price * product?.stock,

@@ -1,4 +1,3 @@
-// src/components/StatCard.jsx
 const StatCard = ({ label, value, prefix = "", suffix = "" }) => {
   return (
     <div className="bg-white shadow rounded p-4">

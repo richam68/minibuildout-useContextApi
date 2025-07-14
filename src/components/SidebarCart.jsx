@@ -1,9 +1,8 @@
 import { useEffect } from "react";
-import CartPortal from "./CartPortal";
-import { useAppContext } from "../context/AppContext";
-import { useToast } from "../hooks/useToast";
 import { Minus, Plus, Trash2, X } from "react-feather";
+import { useAppContext } from "../context/AppContext";
 import { useToastUtils } from "../utils/toast";
+import CartPortal from "./CartPortal";
 
 const CartSidebar = ({ isOpen, onClose }) => {
   const { cartItems, increaseQuantity, decreaseQuantity, removeFromCart } =
