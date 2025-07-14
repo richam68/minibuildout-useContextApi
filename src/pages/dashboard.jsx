@@ -6,7 +6,6 @@ import StatCard from "../components/StatsCard";
 const { productsArray } = generateMockProducts(1000);
 
 const Dashboard = () => {
-  console.log("productsArray", productsArray);
   //total of products
   const totalProducts = productsArray?.length;
   const totalRevenue = productsArray?.reduce(

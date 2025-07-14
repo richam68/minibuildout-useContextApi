@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import { useAppContext } from "../context/AppContext";
 import useDebounce from "../hooks/useDebounce";
-import CartSidebar from "./CartSideBar";
+import CartSidebar from "./CartSideBar.jsx";
 
 function Header() {
   const { setSearchQuery, cartItems } = useAppContext();
